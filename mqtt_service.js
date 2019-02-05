@@ -14,7 +14,7 @@ var mqtt = require('net').createServer(aedes.handle);
 mqtt.listen(mqtt_port);
 
 aedes.on('publish', function(packet, client) {
-  console.log('publish->',packet);
+  //console.log('publish->',packet);
 
  if(! client) return;
  
@@ -23,7 +23,7 @@ aedes.on('publish', function(packet, client) {
  packet.payload = JSON.stringify(packet.payload);
  packet.timestamp = new Date();
  
- console.log('JSON->', packet.timestamp +'<>'+ packet.payloadString);
+ //console.log('JSON->', packet.timestamp +'<>'+ packet.payloadString);
 
  request.post('http://copelli.com.br:8080/post_dados_equipamentos', {
    json: JSON.parse(packet.payloadString)
